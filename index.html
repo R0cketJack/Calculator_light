@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Калькулятор</title>
+</head>
+<body>
+    <section class="main">
+        <div class="main_wrapper">
+            <div class="main_container">
+                <div class="params_container">
+                    <div class="size_container">
+                        <div class="size_header"><h4>Задайте размер</h4></div>
+                        <div class="size_params">
+                            <div class="height_container">
+                                <div class="height_header">
+                                    <span>Длина, см</span>
+                                </div>
+                                <div class="height_slider_container">
+                                    <input class="height_slider_range" step="16" type="range" name="rangeInputheight" min="32" max="512" oninput="updateInputValueByRange(this.value,'Height');" id="rangeHeight">
+                                    <div class="input-wrapper">
+                                      <input class="height_slider_text" type="text" id="textInputHeight" value="0">
+                                      <span class="minus" onclick="decrementValueHeight()">-</span>
+                                      <span class="plus" onclick="incrementValueHeight()">+</span>
+                                    </div>
+                                  </div>
+                            </div>
+                            <div class="width_container">
+                                <div class="width_header">
+                                    <span>Высота, см</span>
+                                </div>
+                                <div class="width_slider_cotainer">
+                                    <input class="width_slider_range" step="16" type="range" name="rangeInputwidth" min="16" max="320" oninput="updateInputValueByRange(this.value,'Width');" id="rangeWigth">
+                                    <div class="input-wrapper">
+                                        <input class="width_slider_text" type="text" id="textInputWidth" value="0">
+                                        <span class="minus" onclick="decrementValueWidth()">-</span>
+                                        <span class="plus" onclick="incrementValueWidth()">+</span>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="colors_container">
+                        <div class="colors_header"><h4>Выберите цвет панели</h4></div>
+                            <div class="colors_params">
+                                <div class="color_group1">
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Зеленый" id="check1" class="custom_checkbox">
+                                        <label for="check1" class="color_name decor_green"><span class="colorName_span">Зеленый</span></label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Белый" id="check2" class="custom_checkbox">
+                                        <label for="check2" class="color_name gecor_white"><span class="colorName_span">Белый</span></label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Красный" id="check3" class="custom_checkbox">
+                                        <label for="check3" class="color_name decor_red"><span class="colorName_span">Красный</span></label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Желтый" id="check4" class="custom_checkbox">
+                                        <label for="check4" class="color_name decor_yellow"><span class="colorName_span">Желтый</span></label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Синий" id="check5" class="custom_checkbox">
+                                        <label for="check5" class="color_name decor_blue"><span class="colorName_span">Синий</span></label>
+                                    </div>
+                                </div>
+                                <div class="color_group2">
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Полноцвет 32*16" id="check6" class="custom_checkbox">
+                                        <label for="check6" class="color_name decor_rgb">
+                                            <div class="color_name_params">
+                                                <span class="colorName_span">Полноцвет 32*16</span>
+                                                <span class="colorName_span2">красный, зеленый, голубой</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Полноцвет 16*16" id="check7" class="custom_checkbox">
+                                        <label for="check7" class="color_name decor_rgb">
+                                            <div class="color_name_params">
+                                                <span class="colorName_span">Полноцвет 16*16</span>
+                                                <span class="colorName_span2">красный, зеленый, голубой</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="RG" id="check8" class="custom_checkbox">
+                                        <label for="check8" class="color_name decor_rge">
+                                            <div class="color_name_params">
+                                                <span class="colorName_span">RG</span>
+                                                <span class="colorName_span2">красный, зеленый, желтый</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="colors_content_container">
+                                        <input type="checkbox" name="color" value="Автомобильная строка" id="check9" class="custom_checkbox">
+                                        <label for="check9" class="color_name decor_gwrbe">
+                                            <div class="color_name_params">
+                                                <span class="colorName_span">Автомобильная строка</span>
+                                                <span class="colorName_span2">зеленый, белый, красный, синий, желтый</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="result_container">
+                    <div class="result_content_container">
+                        <div class="result_header"><h4>Результат расчета</h4></div>
+                        <div class="result_data">
+                            <div class="deadline">
+                                <span class="result_name">Срок изготовления</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="production_time">1-2 дня</span>
+                            </div>
+                            <div class="height_width">
+                                <span class="result_name">Длина x высота с коробом</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="widht_height_box">99x83 см</span>
+                            </div>
+                            <div class="area">
+                                <span class="result_name">Площадь экрана</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="screen_area">0.77 м²</span>
+                            </div>
+                            <div class="leds_module">
+                                <span class="result_name">LED модулей</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="led_module">2 шт</span>
+                            </div>
+                            <div class="leds">
+                                <span class="result_name">Сверхярких светодиодов</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="leds_area">7 680 шт</span>
+                            </div>
+                            <div class="resolution">
+                                <span class="result_name">Разрешение экрана</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="screen_resolution">96*80 px</span>
+                            </div>
+                            <div class="warranty">
+                                <span class="result_name">Гарантия</span>
+                                <span class="result_decor"></span>
+                                <span class="result_result" id="warranty">1 год</span>
+                            </div>
+                        </div>
+                        <div class="result_summ">
+                            <span class="total_summ" id="result_area">52 165 ₽</span>
+                            <span class="totalSumm_span">сумма заказа</span>
+                        </div>
+                        <div class="order_bnt"><button class="btn_order">Заказать</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>
